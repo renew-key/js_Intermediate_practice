@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>陣列進階操作 map()</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/map.css">
+</head>
+<body>
+    <div id="app">
+        <ul class="tit bgcolor">
+            <li>名字 + 性別</li>
+        </ul>
+        <div class="itemList">
+            <ul id="itemBox" class="tit">
+            </ul>
+        </div>
+    </div>
+    <script>
+        var arr = [
+            {
+                name: "遊戲",
+                sex: "male"
+            },
+            {
+                name: "幸子",
+                sex: "female"
+            },
+            {
+                name: "城之內",
+                sex: "male"
+            },
+            {
+                name: "海馬",
+                sex: "male"
+            },
+            {
+                name: "本田",
+                sex: "male"
+            }
+        ]
+        var itemBox = document.getElementById('itemBox');
+        const newArray = arr.map(function(obj){
+            return obj.name+obj.sex;
+        })
+        newArray.forEach(function(array){
+            itemBox.innerHTML+='<li>'+array+'</li>'
+        })
+
+    
+    </script>
+</body>
+</html>

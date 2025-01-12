@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作資料才是王道 3</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/domData.css">
+</head>
+<body>
+    <div style="display: flex;flex-direction: column;">
+        <div>
+            <button id="btn1">title</button>
+            <button id="btn2">link</button>
+            <button id="btn3">text</button>
+            <button id="btn4">money</button>
+        </div>
+        <div >
+            <p id=text></p>
+        </div>
+    </div>
+
+    <script>
+
+
+        var data = {
+            title: '現代 JavaScript 職人之路｜中階實戰篇',
+            link: 'https://hiskio.com/courses/245',
+            text: '您需要一位在業界打滾多年、在教學界經驗豐富又懂得如何帶您成長的導師，帶您從基礎起飛，成為進擊的前端工程師。',
+            money: '3800'
+        }
+        var text = document.getElementById('text');
+        var dataTmp = { }
+        var btn =[];
+
+        function Binding(obj,key,ccallBackFun){
+            let val = obj[key];
+            Object.defineProperty(obj,key,{
+                get:function(){
+                    return val;
+                },
+                set:function(value){
+                    val = value;
+                    callBackFun(val);
+                }
+            })
+        }
+        function handleClick(key){
+            dataTmp[key] = data[key];
+            
+        }
+        Binding(dataTmp,'title',callBackFun);
+        Binding(dataTmp,'link',callBackFun);
+        Binding(dataTmp,'text',callBackFun);
+        Binding(dataTmp,'money',callBackFun);
+        
+    
+        function callBackFun(key){
+            console.log(key);
+            text.innerText=key
+        }
+
+        for(let i=1;i<5;i++){
+            btn[i]= document.getElementById('btn'+i);
+            // console.log(btn[i].innerText);
+            // btn[i].addEventListener('click',handleClick(i)); //加載後立刻會執行
+            btn[i].addEventListener('click',()=>handleClick(btn[i].innerText)); //點擊後才會執行
+        }
+    
+    
+
+    
+    </script>
+
+
+
+
+</body>
+</html>

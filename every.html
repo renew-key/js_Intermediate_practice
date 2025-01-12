@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>陣列進階操作 every() </title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/every.css">
+</head>
+<body>
+    
+    <div id="app">      
+        <h1>制度規章</h1> 
+        <form>
+            <div class="item">
+                <h3>● 規章一</h3>
+                <p>規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!</p>
+                <input id="query1" type="checkbox" name="query1">
+                <label for="query1">你願意遵守以上規章?</label></br>
+            </div>
+
+            <div class="item">
+                <h3>● 規章二</h3>
+                <p>規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!</p>
+                <input id="query2" type="checkbox" name="query2">
+                <label for="query2">你願意遵守以上規章?</label></br>
+            </div>
+
+            <div class="item">
+                <h3>● 規章三</h3>
+                <p>規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!</p>
+                <input id="query3" type="checkbox" name="query3">
+                <label for="query3">你願意遵守以上規章?</label></br>
+            </div>
+
+            <button id="submit">送出</button>
+        </form>
+    </div>
+    <script>
+
+        var submit = document.getElementById("submit");
+        var query1 = document.getElementById('query1');
+        var query2 = document.getElementById('query2');
+        var query3 = document.getElementById('query3');
+
+        function checkFn(){
+            const arr = [
+                query1,
+                query2,
+                query3
+            ];
+            const isAllCheck = arr.every(function(el){
+                // console.log(el)
+                return el.checked === true;
+            })
+
+            return isAllCheck;
+            
+        }
+
+        function changeFn(){
+            console.log(submit)
+            submit.disabled=!checkFn();
+            
+            // console.log(isAllCheck);
+        }
+
+        
+        query1.addEventListener("change", changeFn);
+        query2.addEventListener("change", changeFn);
+        query3.addEventListener("change", changeFn);
+
+        changeFn();
+
+
+        submit.addEventListener("click", function(){
+            alert("送出成功")
+        })
+    
+    
+    
+    </script>
+
+
+
+
+
+
+</body>
+</html>
